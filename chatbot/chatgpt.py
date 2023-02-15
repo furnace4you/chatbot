@@ -6,7 +6,7 @@ openai.api_key = st.secrets["api_key"]
 
 # openAI code
 def openai_create(prompt):
-
+    openai.api_key = st.secrets["api_key"]
     response = openai.Completion.create(
     # model="text-davinci-003",
     model="text-babbage-001",
