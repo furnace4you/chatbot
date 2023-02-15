@@ -4,8 +4,6 @@ from streamlit_chat import message
 import openai
 openai.api_key = st.secrets["api_key"]
 
-st.write(openai.api_key)
-
 # openAI code
 def openai_create(prompt):
 
