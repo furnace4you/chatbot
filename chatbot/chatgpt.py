@@ -44,14 +44,14 @@ def openai_create(prompt):
     messages = []
     MAX_LEN = 3096
     now_len = len(prompt)
-    for i in range(len(st.session_state['generated']),0,-1):
+    for i in range(len(st.session_state['generated'])-1,-1,-1):
         if now_len>MAX_LEN:break
         now_len += (len(st.session_state['past'][i])+len(st.session_state["generated"][i]))
         messages.append({"role": "assistant", "content": st.session_state["generated"][i]})
         messages.append({"role": "user", "content": st.session_state['past'][i]})
     messages = messages[::-1]
     messages.append({"role": "user", "content": prompt})
-    
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
